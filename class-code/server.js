@@ -3,11 +3,13 @@ const express = require('express') // import the express package
 const app = express() // creates an instance of express Server
 
 
+app.use(express.static('public')) // my app will serve all static files from public folder
+
 
 // app.get(): takes 2 arguments
 // 1. the route: /homepage
 // 2. function
-app.get('/homepage',function(request,response){
+app.get('/',function(request,response){
     console.log(__dirname)
     response.sendFile(__dirname + '/views/homepage.html')
  
@@ -19,7 +21,8 @@ app.get('/homepage',function(request,response){
 
 // exercise 2:
 // Create a /about route
-// when we get this request it should send back a <p> element with 1 scentence describing you
+// create an about.html file with a <p> element with 1 scentence describing you
+// when we get this request it should send back the about.html
 
 app.listen(3000)
 
