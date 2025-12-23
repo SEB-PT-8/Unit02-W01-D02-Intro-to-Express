@@ -9,12 +9,16 @@ app.use(express.static('public')) // my app will serve all static files from pub
 // app.get(): takes 2 arguments
 // 1. the route: /homepage
 // 2. function
-app.get('/',function(request,response){
+app.get('/',function(req,res){
     console.log(__dirname)
-    response.sendFile(__dirname + '/views/homepage.html')
+    res.sendFile(__dirname + '/views/homepage.html')
  
 })
 
+
+app.get('/about',function(req,res){
+    res.sendFile(__dirname + '/views/about.html')
+})
 
 
 
@@ -24,5 +28,7 @@ app.get('/',function(request,response){
 // create an about.html file with a <p> element with 1 scentence describing you
 // when we get this request it should send back the about.html
 
-app.listen(3000)
+app.listen(3000,function(){
+    console.log('App is working')
+})
 
